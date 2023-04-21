@@ -61,6 +61,8 @@ function Controller() {
 
 const controller = Controller();
 
-export const checkPostData = controller.checkPostData;
-export const setData = controller.setData;
-export const getData = controller.getData;
+export const { checkPostData, getData, setData } = controller;
+
+// export const checkPostData = controller.checkPostData;
+// export const setData = controller.setData;
+// export const getData = controller.getData;
