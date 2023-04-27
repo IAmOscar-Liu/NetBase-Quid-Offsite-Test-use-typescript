@@ -35,11 +35,11 @@ function Controller() {
       next: NextFunction
     ) => {
       const parseResult = postData.safeParse(req.body);
-      if (parseResult.success) next();
-      else
+      if (!parseResult.success)
         return res
           .status(400)
           .json({ error: parseResult.error.issues[0].message });
+      next();
     },
     getData: (_: any, res: Response) => {
       if (isProcessing || !result) return res.json({ status: "pending" });
@@ -62,5 +62,3 @@ function Controller() {
 const controller = Controller();
 
 export const { checkPostData, getData, setData } = controller;
-
-
